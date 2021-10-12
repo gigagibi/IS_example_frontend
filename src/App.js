@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./styles/App.css";
-
-import PostList from "./components/PostList";
-import MyButton from "./components/UI/Button/MyButton";
-import MyInput from "./components/UI/Input/MyInput";
 
 function App() {
   const [post, setPost] = useState([
@@ -19,25 +14,36 @@ function App() {
   ]);
 
   const [state, setState] = useState({ offices: [], isLoaded: false });
-  
+
   useEffect(() => {
-    fetch("http://localhost:54/api/office/")
-    .then((data) => data.json()
-    .then(d => setState({ offices: d, isLoaded: true })))
-  })
+    fetch("https://jsonplaceholder.typicode.com/posts/").then((data) =>
+      data
+        .json()
+        .then((d) => {
+          setState({ offices: d, isLoaded: true });
+          console.log({ d });
+        })
+        .catch(() => console.log("error!"))
+    );
+  }, []);
+
+  console.log(state.isLoaded);
+  console.log(state.offices.length);
 
   return (
     <div>
-      <form>
-        <MyInput type="text" placeholder="Название поста" />
-        <MyInput type="text" placeholder="Описание поста" />
-        <MyButton>Создать пост</MyButton>
-      </form>
-      <PostList posts={post} title="Javascript" />
-      <PostList posts={post2} title="Python" />
       <ul>
-        {state.offices.map(office => {
-          <li key={office.officeId}>{office}</li>;
+        {state.offices.map((office) => {
+          return <li>
+            <ul>
+              <li key={office.id}>
+                {office.body}
+              </li>
+              <li>
+                {office.userId}
+              </li>
+            </ul>
+          </li>
         })}
       </ul>
     </div>
