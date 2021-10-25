@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 // import "./styles/App.css";
-import { HeaderBar } from "./components/HeaderBar";
-import { BrowserRouter} from "react-router-dom";
+import { NavBar } from "./components/NavBar/NavBar";
+import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "./context";
 import { Router } from "./components/Router";
 
@@ -15,7 +15,7 @@ function App() {
   const [auth, setAuth] = useState(false)
 
   useEffect(() => {
-    if(localStorage.getItem('auth') === 'true')  {
+    if (localStorage.getItem('auth') === 'true') {
       setAuth(true)
       setToken(localStorage.getItem('token'))
       setRole(localStorage.getItem('role'))
@@ -26,9 +26,9 @@ function App() {
     <AuthContext.Provider value={{
       auth, setAuth, token, setToken, role, setRole
     }}>
-      <HeaderBar/>
       <BrowserRouter>
-        <Router/>
+        <NavBar />
+        <Router />
       </BrowserRouter>
     </AuthContext.Provider>
 

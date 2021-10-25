@@ -1,0 +1,12 @@
+.NavButton {
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    padding: 7px;
+    border-radius: 3px;
+    background: rgb(146, 247, 195);
+    margin-left: 10px;
+    /* box-shadow: 0 -3px rgb(53, 167, 110) inset; */
+    transition: 0.2s;
+    display: block;
+}

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../../context'
 
 export const Authorization = () => {
@@ -11,7 +11,7 @@ export const Authorization = () => {
         const response = await axios({
             method: 'post',
             url: 'http://localhost:88/login',
-            headers: {
+            Navs: {
                 'Content-Type': 'application/json'
             },
             data: {
@@ -30,6 +30,7 @@ export const Authorization = () => {
             localStorage.setItem('auth', 'true')
             localStorage.setItem('token', token)
             localStorage.setItem('role', role)
+            localStorage.setItem('login', login)
         }
         else {
             console.log('fail')
