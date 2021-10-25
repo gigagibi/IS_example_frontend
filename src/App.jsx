@@ -1,48 +1,37 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-import "./styles/App.css";
+// import "./styles/App.css";
 import { HeaderBar } from "./components/HeaderBar";
-import { BrowserRouter, Route } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter} from "react-router-dom";
+import { AuthContext } from "./context";
+import { Router } from "./components/Router";
+
 
 // const [posts, setPosts] = useState('')
 
 function App() {
-  const [offices, setOffices] = useState([]);
-
-  async function fetchOf() {
-    const response = await axios.get("http://localhost:88/api/office/");
-    setOffices(response.data);
-    // console.log(response.data);
-    console.log(offices);
-  }
+  const [token, setToken] = useState('')
+  const [role, setRole] = useState('')
+  const [auth, setAuth] = useState(false)
 
   useEffect(() => {
-    fetchOf();
-  }, []);
+    if(localStorage.getItem('auth') === 'true')  {
+      setAuth(true)
+      setToken(localStorage.getItem('token'))
+      setRole(localStorage.getItem('role'))
+    }
+  }, [])
 
-  const [auth, setAuth] = useState(false)
   return (
-    <BrowserRouter>
-      <Route path="/login">
-        auth
-        ?
-        <Autho
-        </Route>
-      <Route path="/home">Home</Route>
-      <Route path="/departments">departments</Route>
-      <Route path="/find_employers">find_employers</Route>
-      <Route path="/find_employers/result">founded</Route>
-      <Route path="/tabel">tabel</Route>
-      <Route path="/tasks">tasks</Route>
-      <Route path="/offices">
-        <ul>
-          {offices.map((office) => {
-            return <li key={office.officeId}>{office.officeId} : {office.address}</li>;
-          })}
-        </ul>
-      </Route>
-    </BrowserRouter>
+    <AuthContext.Provider value={{
+      auth, setAuth, token, setToken, role, setRole
+    }}>
+      <HeaderBar/>
+      <BrowserRouter>
+        <Router/>
+      </BrowserRouter>
+    </AuthContext.Provider>
+
   );
 }
 export default App;

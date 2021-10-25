@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../context'
 
 export const HeaderBar = () => {
+    const {auth} = useContext(AuthContext)
     return (
-        <div>loh</div>
+        auth
+        ?
+        <div>logged</div>
+        :
+        <div>not logged</div>
     )
 }
