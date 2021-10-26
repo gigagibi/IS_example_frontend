@@ -21,7 +21,7 @@ export const DepartmentChange = ({ children, visible, setVisible, department }) 
                 name,
                 office
             }
-        }).then(response => console.log(response))
+        }).then(response => console.log(response)).then(() => setVisible(false))
     }
 
     const cl = [classes.departmentModal]
@@ -29,8 +29,8 @@ export const DepartmentChange = ({ children, visible, setVisible, department }) 
         cl.push(classes.departmentModalActive)
     }
     return (
-        <div className={cl.join(' ')}>
-            <form className={classes.departmentModalContent}>
+        <div className={cl.join(' ')} onClick={() => setVisible(false)}>
+            <form className={classes.departmentModalContent} onClick={(e) => e.stopPropagation()}>
                 <input type="text" placeholder="name" onChange={(e) => setName(e.target.value)}></input>
                 <SelectOffices office={office} setOffice={setOffice}></SelectOffices>
                 <button type="submit" onClick={() => changeDepartment()}>Изменить</button>
