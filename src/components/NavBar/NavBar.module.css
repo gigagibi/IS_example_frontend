@@ -1,5 +1,6 @@
 .Nav {
     display: flex;
+    /* justify-content: center; */
     margin: auto auto;
     background-color: seagreen;
 }
