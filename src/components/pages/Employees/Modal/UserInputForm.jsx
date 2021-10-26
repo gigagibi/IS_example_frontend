@@ -21,6 +21,16 @@ export const UserInputForm = ({setVisible, user}) => {
         }).then(response => console.log(response))
     }
 
+    function deleteUser() {
+        axios({
+            method: 'delete',
+            url: 'http://localhost:88/api/user/' + newUser.userId,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(response => console.log(response))
+    }
+
     return (
         <div style={{ backgroundColor: 'white', display: 'block', justifyContent: 'space-between', border: '2px solid teal', marginTop: '15px', marginBottom: '15px', borderRadius: '6px' }} key={newUser.userId}>
                 <p style={{ marginLeft: '5px' }}>Имя: <input type="text" value={newUser.name} onChange={(e) => { setNewUser({ ...newUser, name: e.target.value }) }} /></p>
@@ -30,6 +40,7 @@ export const UserInputForm = ({setVisible, user}) => {
                 <p style={{ marginLeft: '5px' }}>Должность: <SelectPosition setNewUser={setNewUser} newUser={newUser} /></p>
                 <p style={{ marginLeft: '5px' }}>Отдел: <SelectDepartment setNewUser={setNewUser} newUser={newUser} /></p>
                 <button type="submit" onClick={() => { changeUser(); setVisible(false) }}>Изменить</button>
+                <button type="submit" onClick={() => { deleteUser(); setVisible(false) }}>Удалить</button>
             </div>
     )
 }

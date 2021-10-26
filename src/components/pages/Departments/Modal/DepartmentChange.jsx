@@ -24,6 +24,16 @@ export const DepartmentChange = ({ children, visible, setVisible, department }) 
         }).then(response => console.log(response)).then(() => setVisible(false))
     }
 
+    function deleteDepartment() {
+        axios({
+            method: 'delete',
+            url: 'http://localhost:88/api/department/' + department.departmentId,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(response => console.log(response.data))
+    }
+
     const cl = [classes.departmentModal]
     if (visible) {
         cl.push(classes.departmentModalActive)
@@ -34,6 +44,7 @@ export const DepartmentChange = ({ children, visible, setVisible, department }) 
                 <input type="text" placeholder="name" onChange={(e) => setName(e.target.value)}></input>
                 <SelectOffices office={office} setOffice={setOffice}></SelectOffices>
                 <button type="submit" onClick={() => changeDepartment()}>Изменить</button>
+                <button type="submit" onClick={() => deleteDepartment()}>Удалить</button>
             </form>
         </div>
     )

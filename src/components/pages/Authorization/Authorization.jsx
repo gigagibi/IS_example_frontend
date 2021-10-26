@@ -6,8 +6,8 @@ export const Authorization = () => {
     const {login, setLogin, setAuth, token, setToken, role, setRole } = useContext(AuthContext)
     const [password, setPassword] = useState('')
 
-    async function authorize() {
-        const response = await axios({
+    function authorize() {
+        axios({
             method: 'post',
             url: 'http://localhost:88/login',
             Navs: {
@@ -17,20 +17,18 @@ export const Authorization = () => {
                 login: login,
                 password: password
             }
+        }).then(response => {
+            setToken(response.data.token)
+            setRole(response.data.role)
+            if (token.localeCompare('') !== 0 && token.localeCompare('User not found') !== 0) {
+                setAuth(true)
+                localStorage.setItem('auth', 'true')
+                localStorage.setItem('token', token)
+                localStorage.setItem('login', login)
+                localStorage.setItem('role', role)
+            }
         })
-        console.log(response)
-        console.log(response.data)
-        console.log(response.data.token)
-        console.log(response.data.role)
-        setToken(response.data.token)
-        setRole(response.data.role)
-        if (token.localeCompare('') !== 0 && token.localeCompare('User not found') !== 0) {
-            setAuth(true)
-            localStorage.setItem('auth', 'true')
-            localStorage.setItem('token', token)
-            localStorage.setItem('login', login)
-            localStorage.setItem('role', role)
-        }
+        
     }
     return (
         <div>

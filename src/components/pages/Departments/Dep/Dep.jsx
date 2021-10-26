@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../../../context'
 import classes from './Dep.module.css'
-export const Dep = ({ dep, setVisible, setDepartment }) => {
+export const Dep = ({ dep, setVisible, setDepartment, deleteDepartment }) => {
     const { role } = useContext(AuthContext)
     return (
         role === 'ROLE_ADMIN' ?
