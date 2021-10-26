@@ -1,0 +1,6 @@
+.createForm {
+    border: 2px solid red;
+    border-width: auto;
+    
+    border-radius: 6px;
+}
