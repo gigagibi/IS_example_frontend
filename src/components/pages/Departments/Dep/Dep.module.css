@@ -1,0 +1,8 @@
+.dep {
+    display:grid;
+    justify-content: space-between;
+    border: 2px solid teal;
+    border-radius: 6px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

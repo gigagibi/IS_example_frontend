@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "./context";
 import { Router } from "./components/Router";
+import axios from "axios";
 
 
 // const [posts, setPosts] = useState('')
@@ -13,6 +14,7 @@ function App() {
   const [token, setToken] = useState('')
   const [role, setRole] = useState('')
   const [auth, setAuth] = useState(false)
+  const [login, setLogin] = useState('')
 
   useEffect(() => {
     if (localStorage.getItem('auth') === 'true') {
@@ -24,7 +26,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={{
-      auth, setAuth, token, setToken, role, setRole
+      login, setLogin, auth, setAuth, token, setToken, role, setRole
     }}>
       <BrowserRouter>
         <NavBar/>

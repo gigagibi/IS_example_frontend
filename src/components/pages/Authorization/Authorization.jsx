@@ -3,8 +3,7 @@ import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../../context'
 
 export const Authorization = () => {
-    const { auth, setAuth, token, setToken, role, setRole } = useContext(AuthContext)
-    const [login, setLogin] = useState('')
+    const {login, setLogin, setAuth, token, setToken, setRole } = useContext(AuthContext)
     const [password, setPassword] = useState('')
 
     async function authorize() {
@@ -29,11 +28,7 @@ export const Authorization = () => {
             setAuth(true)
             localStorage.setItem('auth', 'true')
             localStorage.setItem('token', token)
-            localStorage.setItem('role', role)
             localStorage.setItem('login', login)
-        }
-        else {
-            console.log('fail')
         }
     }
     return (
