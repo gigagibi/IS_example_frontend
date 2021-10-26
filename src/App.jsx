@@ -27,7 +27,7 @@ function App() {
       auth, setAuth, token, setToken, role, setRole
     }}>
       <BrowserRouter>
-        <NavBar />
+        <NavBar/>
         <Router />
       </BrowserRouter>
     </AuthContext.Provider>
