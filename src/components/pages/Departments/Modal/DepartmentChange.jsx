@@ -4,7 +4,7 @@ import { AuthContext } from '../../../../context'
 import { SelectOffices } from '../Dep/SelectOffices'
 import classes from './DepartmentChange.module.css'
 
-export const DepartmentChange = ({ children, visible, setVisible, department }) => {
+export const DepartmentChange = ({ departments, setDepartments, children, visible, setVisible, department }) => {
     const { token } = useContext(AuthContext)
     const [name, setName] = useState('')
     // const [offices, setOffices] = useState([])

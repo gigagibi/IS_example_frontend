@@ -1,0 +1,13 @@
+.tabel {
+    display: flex;;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+}
+
+.tabelContent {
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 4px;
+    display: block;
+    align-content: center;
+    margin: auto;
+}

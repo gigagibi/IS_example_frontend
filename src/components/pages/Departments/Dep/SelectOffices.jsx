@@ -18,6 +18,7 @@ export const SelectOffices = ({ office, setOffice }) => {
         getOffices()
     }, [])
 
+
     return (
         <select onChange={(e) => setOffice({ ...office, officeId: e.target.value })}>
             {offices.map(off => {

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect } from 'react/cjs/react.development'
+import { useState, useEffect, useContext } from 'react/cjs/react.development'
+import { AuthContext } from '../../../context'
 import { SelectDepartment } from '../Employees/Modal/Select/SelectDepartment'
 import { SelectPosition } from '../Employees/Modal/Select/SelectPosition'
 
@@ -12,12 +13,14 @@ export const Registration = () => {
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
+    const {token} = useContext(AuthContext)
     function addUser() {
         axios({
             method: 'post',
             url: 'http://localhost:88/register',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization' : 'Bearer ' + token
             },
             data: {
                 ...newUser, hireDate: date
@@ -41,7 +44,7 @@ export const Registration = () => {
             <p style={{ marginLeft: '5px' }}>Роль (Пользователь, Админ): <input type="text" onChange={(e) => { setNewUser({ ...newUser, role: e.target.value }) }} /></p>
             <p style={{ marginLeft: '5px' }}>Должность: <SelectPosition setNewUser={setNewUser} newUser={newUser} /></p>
             <p style={{ marginLeft: '5px' }}>Отдел: <SelectDepartment setNewUser={setNewUser} newUser={newUser} /></p>
-            <button type="submit" onClick={() => { addUser(); }}>Изменить</button>
+            <button type="submit" onClick={() => { addUser(); }}>зарегистрировать</button>
         </div>
     )
 }

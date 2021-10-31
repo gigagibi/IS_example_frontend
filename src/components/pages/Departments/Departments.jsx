@@ -31,7 +31,7 @@ export const Departments = () => {
                 'Authorization': 'Bearer ' + token
             },
             data: {...newDepartment, office: newOffice}
-        })
+        }).then(setNewDepartment({...newDepartment, office: newOffice}))
     }
     useEffect(() => {
         getDepartments()
@@ -39,15 +39,19 @@ export const Departments = () => {
 
     return (
         <div>
-            <DepartmentChange department={department} visible={visible} setVisible={setVisible}/>
+            <DepartmentChange entries department={department} visible={visible} setVisible={setVisible}/>
             {departments.map(dep => {
                 return <Dep setDepartment={setDepartment} setVisible={setVisible} key={dep.departmentId} selected dep={dep}/>
             })}
+            {role==='ROLE_ADMIN' ?
             <form className={formCL.createForm}>
                 <p>Название отдела: <input type="text" onChange={(e) => setNewDepartment({...newDepartment, name: e.target.value})}/></p>
                 <p><SelectOffices office={newOffice} setOffice={setNewOffice}/></p>
                 <button onClick={() => addDepartment()}>Создать отдел</button>
             </form>
+            :
+            <div/>
+            }
             
         </div>
     )
