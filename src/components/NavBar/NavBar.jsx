@@ -27,6 +27,7 @@ export const NavBar = () => {
             <NavButton url='/find_employers'>Сотрудники</NavButton>
             <NavButton url='/tabel'>Табель</NavButton>
             <NavButton url='/tasks'>Задачи</NavButton>
+            <NavButton url='/messages'>Сообщения</NavButton>
             {role==='ROLE_ADMIN' ?
             <NavButton url='/register'>Зарегистрировать</NavButton>
             :

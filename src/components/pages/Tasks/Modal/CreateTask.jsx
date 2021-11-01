@@ -31,9 +31,6 @@ export const CreateTask = ({ visible, setVisible, ...props }) => {
     }
 
     useEffect(() => {props.getTasks()}, [visible])
-    useEffect(() => {console.log(user)}, [user])
-    useEffect(() => {console.log(project)}, [project])
-    useEffect(() => {console.log(taskType)}, [taskType])
 
     return (
         <div className={cl.join(' ')} onClick={() => setVisible(false)}>

@@ -22,14 +22,6 @@ export const Entry = ({ entry, ...props }) => {
         }).then(async response => setNewEntry(response.data))
     }
 
-    // useEffect(() => {
-    //     console.log(newEntry)
-    // }, [newEntry])
-
-    // useEffect(() => {
-    //     console.log(task)
-    // }, [task])
-
     useEffect(() => {
         props.getEntries()
     }, [newEntry])

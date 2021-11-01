@@ -1,0 +1,6 @@
+.dialog {
+    background-color: lightsteelblue;
+    overflow: scroll;
+    border-color: black;
+    margin-left: 20px;
+}

@@ -1,0 +1,12 @@
+.messages {
+    display: flex;
+    justify-content: space-between;
+    align-items:baseline;
+    text-align: center;
+}
+
+.dialogIcons {
+    border-color: black;
+    display: inline;
+    background-color:cadetblue;
+}

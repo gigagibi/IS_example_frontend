@@ -1,0 +1,13 @@
+.receivedMsg {
+    background-color:lightgray;
+    border-radius: 9px;
+    border-color: black;
+    margin-bottom: 20px;
+}
+
+.sentMsg {
+    background-color:darkcyan;
+    border-radius: 9px;
+    border-color: black;
+    margin-bottom: 20px;
+}
