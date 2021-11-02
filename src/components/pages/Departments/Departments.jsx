@@ -14,6 +14,7 @@ export const Departments = () => {
     const [department, setDepartment] = useState()
     const [newDepartment, setNewDepartment] = useState()
     const [newOffice, setNewOffice] = useState({officeId: 1})
+    
     function getDepartments() {
         axios.get('http://localhost:88/api/department/', {
             headers: {
@@ -31,7 +32,7 @@ export const Departments = () => {
                 'Authorization': 'Bearer ' + token
             },
             data: {...newDepartment, office: newOffice}
-        }).then(response => setDepartments(response.data)).then(() => setNewOffice(departments[0].office))
+        }).then(response => setDepartments(response.data))
     }
 
     useEffect(() => {
@@ -41,10 +42,6 @@ export const Departments = () => {
     useEffect(() => {
         getDepartments()
     }, [])
-    
-    // useEffect(() => {
-    //     se
-    // })
 
     useEffect(() => {
         console.log(department)
