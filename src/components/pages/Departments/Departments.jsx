@@ -13,7 +13,7 @@ export const Departments = () => {
     const [visible, setVisible] = useState(false)
     const [department, setDepartment] = useState()
     const [newDepartment, setNewDepartment] = useState()
-    const [newOffice, setNewOffice] = useState()
+    const [newOffice, setNewOffice] = useState({officeId: 1})
     function getDepartments() {
         axios.get('http://localhost:88/api/department/', {
             headers: {
@@ -31,23 +31,36 @@ export const Departments = () => {
                 'Authorization': 'Bearer ' + token
             },
             data: {...newDepartment, office: newOffice}
-        }).then(setNewDepartment({...newDepartment, office: newOffice}))
+        }).then(response => setDepartments(response.data)).then(() => setNewOffice(departments[0].office))
     }
+
+    useEffect(() => {
+        getDepartments()
+    }, [visible])
+
     useEffect(() => {
         getDepartments()
     }, [])
+    
+    // useEffect(() => {
+    //     se
+    // })
+
+    useEffect(() => {
+        console.log(department)
+    }, [department])
 
     return (
         <div>
-            <DepartmentChange entries department={department} visible={visible} setVisible={setVisible}/>
+            {department!=undefined ? <DepartmentChange department={department} visible={visible} setVisible={setVisible}/> : <div/>}
             {departments.map(dep => {
-                return <Dep setDepartment={setDepartment} setVisible={setVisible} key={dep.departmentId} selected dep={dep}/>
+                return <Dep setDepartment={setDepartment} setVisible={setVisible} key={dep.departmentId} dep={dep}/>
             })}
             {role==='ROLE_ADMIN' ?
             <form className={formCL.createForm}>
                 <p>Название отдела: <input type="text" onChange={(e) => setNewDepartment({...newDepartment, name: e.target.value})}/></p>
                 <p><SelectOffices office={newOffice} setOffice={setNewOffice}/></p>
-                <button onClick={() => addDepartment()}>Создать отдел</button>
+                <button type="button" onClick={() => addDepartment()}>Создать отдел</button>
             </form>
             :
             <div/>
