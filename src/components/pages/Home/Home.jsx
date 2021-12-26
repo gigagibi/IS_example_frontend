@@ -7,14 +7,14 @@ import { AuthContext } from '../../../context'
 
 export const Home = () => {
     const [name, setName] = useState('')
-    const {token} = useContext(AuthContext)
+    const { token } = useContext(AuthContext)
 
     function getUserName() {
         axios({
             method: 'get',
             url: 'http://localhost:88/api/user/token/name',
             headers: {
-                'Authorization' : 'Bearer ' + token
+                'Authorization': 'Bearer ' + token
             }
         }).then(response => setName(response.data))
     }
@@ -24,12 +24,15 @@ export const Home = () => {
     }, [])
 
     return (
-        <div className="welcome">
-            <h1 style={{ color: 'darkgreen' }}>Добро пожаловать, {name}</h1>
-            <div style={{}}>
-                <Link to='/tasks'>Перейти к задачам</Link>
-                <Link to='/tabel'>Перейти к табелю</Link>
+        <div style={{alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+            <div className="welcome">
+                <h1 style={{ color: 'darkgreen' }}>Добро пожаловать, {name}</h1>
+                <div style={{ justifyContent: 'space-around' }}>
+                    <Link to='/tasks'>Перейти к задачам</Link>
+                    <Link to='/tabel' style={{ marginLeft: '20px' }}>Перейти к табелю</Link>
+                </div>
             </div>
         </div>
+
     )
 }
