@@ -36,7 +36,7 @@ Site will be available on [http://127.0.0.1:3000]
 ![image](https://user-images.githubusercontent.com/70891118/147393247-23c39434-22a3-41ec-9ed7-ab2ab5c5463e.png)
 
 ### Home page
-![image](https://user-images.githubusercontent.com/70891118/147393339-d6e99f52-50d2-4412-9a2e-c3e67b43dc33.png)
+![image](https://user-images.githubusercontent.com/70891118/147407492-5cdef023-0113-4213-8cf5-7d476d0d7d18.png)
 
 ### Departments Page
 ![image](https://user-images.githubusercontent.com/70891118/147393351-aa5b4111-9307-4b01-96f5-67d854ed5e80.png)
