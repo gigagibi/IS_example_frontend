@@ -6,7 +6,15 @@ The project is an example of system for employees communication and work organiz
 - NodeJS
 - HTML 5
 - CSS
-
+## Run locally with docker
+Get the image
+```bash
+docker pull gigagibi/is_example_frontend
+```
+Run image on port 3000
+```bash
+docker run -p 3000:3000 -it gigagibi/is_example_frontend
+```
 ## Run locally with npm and command line
 **Before launching this app, you need to launch backend part of project https://github.com/gigagibi/IS_example_backend**
 Requirements
